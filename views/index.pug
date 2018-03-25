@@ -1,15 +1,210 @@
-<!DOCTYPE html>
+doctype html
 html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        meta(http-equiv="X-UA-Compatible", content="ie=edge")
-        title=locals.title
-    body
-     .content
-       block content
-
-      script(src='/js/jquery.min.js')
-      script(src='/js/bootstrap.bundle.min.js')
-      script(defer src='https://use.fontawesome.com/releases/v5.0.8/js/all.js')
-      script(src='/js/custom.js')
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title=locals.title
+    meta(name="description" content="Free Bootstrap Theme by BootstrapMade.com")
+    meta(name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template")
+    link(rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto:300,400|Questrial|Satisfy")
+    link(rel="stylesheet" type="text/css" href="css/font-awesome.min.css")
+    link(rel="stylesheet" type="text/css" href="css/bootstrap.min.css")
+    link(rel="stylesheet" type="text/css" href="css/animate.css")
+    link(rel="stylesheet" type="text/css" href="css/style.css")
+  body#myPage(data-spy="scroll" data-target=".navbar" data-offset="60" onload="myFunction()")
+    .header
+      .bg-color
+        header#main-header
+          nav.navbar.navbar-default.navbar-fixed-top
+            .container
+              .navbar-header
+                button.navbar-toggle(type="button" data-toggle="collapse" data-target="#lauraMenu")
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+                a.navbar-brand(href="#") sikaResearch
+              #lauraMenu.collapse.navbar-collapse
+                ul.nav.navbar-nav.navbar-right.navbar-border
+                  li.active
+                    a(href="#main-header") Home
+                  li
+                   a(data-toggle="modal" class="login-head" data-target="#exampleModal" data-whatever="@mdo") Login
+                  li
+                    a(href="#contact") Contact Us
+        .content
+          block content
+        .wrapper
+          .container
+            .row
+              .col-md-12.wow.fadeIn.delay-05s
+                .banner-text
+                  h2
+                    | Hi, Welcome to 
+                    span sikaResearch
+                  p
+                    | A place to Collaborate  
+                    br
+                    | & Learn
+                    .quick-access
+                      button(class="get-started")
+                        | Get Started
+                      button(class="contact-us")
+                        | Contact Us
+                .overlay-detail.text-center
+                  a(href="#about")
+                    i.fa.fa-angle-down
+    section#about.section-padding.wow.fadeIn.delay-05s
+      .container
+        h5.explore-head Explore
+        .row.intro
+          .col-md-4
+            a(href="/final-year")
+             img(src="/images/final-year.svg" alt="")
+            p Final year projects
+            p 
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+          .col-md-4
+            a(href="/research")
+             img(src="/images/research.svg" alt="")
+            p Research Projects
+            p 
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+          .col-md-4
+            a(href="/collaborate")
+             img(src="/images/collaborate.svg" alt="")
+            p Collaborations
+            p 
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+             | lorem ipsum blah blah blah
+            
+    section#portfolio.section-padding.wow.fadeInUp.delay-05s
+      .container
+        .row
+          .col-md-12
+            h2.title.text-center
+              | Let's 
+              span.deco See
+              |  My Work
+          .col-md-12
+            #myGrid.grid-padding
+              .col-md-4.col-sm-4.padding-right-zero
+                img.img-responsive(src="img/portfolio01.jpg")
+                img.img-responsive(src="img/port01.jpg")
+                img.img-responsive(src="img/port02.jpg")
+                img.img-responsive(src="img/portfolio01.jpg")
+              .col-md-4.col-sm-4.padding-right-zero
+                img.img-responsive(src="img/portfolio02.jpg")
+                img.img-responsive(src="img/port01.jpg")
+                img.img-responsive(src="img/port02.jpg")
+                img.img-responsive(src="img/portfolio01.jpg")
+                img.img-responsive(src="img/port03.jpg")
+              .col-md-4.col-sm-4.padding-right-zero
+                img.img-responsive(src="img/port01.jpg")
+                img.img-responsive(src="img/portfolio01.jpg")
+                img.img-responsive(src="img/portfolio02.jpg")
+                img.img-responsive(src="img/port03.jpg")
+                img.img-responsive(src="img/portfolio02.jpg")
+                img.img-responsive(src="img/port02.jpg")
+    section#testimonial.section-padding.wow.fadeInUp
+      .container
+        .row
+          h2.title.text-center
+            | See What Our 
+            span.deco Client
+            |  Are Saying ?
+          .test-sec
+            .col-sm-4
+              blockquote
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamsed commodo nibh ante facilisis bibendum dolor feugiat at.
+              .carousel-info
+                .pull-left
+                  span.testimonials-name John Doe
+                  span.testimonials-post CEO,  Company Inc.
+            .col-sm-4
+              blockquote
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamsed commodo nibh ante facilisis bibendum dolor feugiat at.
+              .carousel-info
+                .pull-left
+                  span.testimonials-name John Doe
+                  span.testimonials-post CEO,  Company Inc.
+            .col-sm-4
+              blockquote
+                p
+                  | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamsed commodo nibh ante facilisis bibendum dolor feugiat at.
+              .carousel-info
+                .pull-left
+                  span.testimonials-name John Doe
+                  span.testimonials-post CEO,  Company Inc.
+    section#contact.section-padding.wow.fadeIn.delay-05s
+      .container
+        .row
+          .col-md-12
+            .contact-sec.text-center
+              h2
+                | Want To 
+                span.deco Reach
+                |  Us?
+              p
+                | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.
+          .col-md-8.col-md-push-2
+            #sendmessage Your message has been sent. Thank you!
+            #errormessage
+            form.contactForm(action="/contact-us" method="POST" role="form")
+              .form-group
+                input#name.form-control(type="text" name="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars")
+                .validation
+              .form-group
+                input#email.form-control(type="email" name="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email")
+                .validation
+              .form-group
+                textarea.form-control(name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message")
+                .validation
+              .text-center
+                button.btn.btn-primary.btn-lg(type="submit") Send Message
+    footer.footer-2.text-center-xs.bg--white
+      .container
+        // end row
+        .row
+          .col-md-6
+            .footer
+              | © Copyright 
+              span.deco(style="font-size:25px") sikaResearch.
+              span  All Rights Reserved
+          .col-md-6.text-right
+            ul.social-list
+              li
+                a(href="#")
+                  i.fa.fa-twitter
+              li
+                a(href="#")
+                  i.fa.fa-youtube
+              li
+                a(href="#")
+                  i.fa.fa-facebook
+              li
+                a(href="#")
+                  i.fa.fa-instagram
+        // end row
+    script(src="js/jquery.min.js")
+    script(src="js/jquery.easing.min.js")
+    script(src="js/bootstrap.min.js")
+    script(src="js/jquery.bxslider.min.js")
+    script(src="js/wow.js")
+    script(src="js/custom.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js")

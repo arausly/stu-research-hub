@@ -10,7 +10,7 @@ dotenv.config({path:'variables.env'});
 
 //app initialization
 const app = express();
-const port = 3000 || process.env.PORT;
+const port = process.env.PORT;
 
 //view engine setup
 app.set('view engine','pug');
@@ -26,11 +26,12 @@ app.use(bodyParser.urlencoded({extended:true}));
 //locals
 app.use((req,res,next)=>{
   res.locals.title = '📖 sika';
+  next();
 });
 
 // database setup
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DATABASE);
+mongoose.connect(process.env.DATABASE_LOCAL);
 mongoose.connection
    .once('open',()=>console.log('connected to the database'))
    .on('error',(err)=>console.log(err))
