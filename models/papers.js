@@ -5,8 +5,10 @@ const paperSchema = new Schema({
     user:[{
        type:Schema.Types.ObjectId
     }],
-    paper:{
-        type:String
+    title:{
+        type:String,
+        trim:true,
+        unique:true
     },
     rating:{
         type:Number,

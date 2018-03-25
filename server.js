@@ -5,9 +5,17 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
 const home = require('./routes/home');
+const session = require('express-session')
+const mongoStore = require('connect-mongo')(session);
+const flash = require('express-flash');
 
 dotenv.config({path:'variables.env'});
 
+const {
+  PORT,
+  DATABASE_LOCAL,
+  SECRET
+} = process.env;
 //app initialization
 const app = express();
 const port = process.env.PORT;
@@ -21,17 +29,25 @@ app.use('/',express.static(path.resolve(__dirname,'public')));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-
+app.use(flash())
+app.use(session({
+  saveUninitialized:false,
+  resave:false,
+  key:'connect-sid',
+  secret:SECRET,
+  store: new mongoStore({url:DATABASE_LOCAL,autoReconnect:true})
+}))
 
 //locals
 app.use((req,res,next)=>{
   res.locals.title = '📖 sika';
+  res.locals.flashes = req.flash();
   next();
 });
 
 // database setup
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.DATABASE_LOCAL);
+mongoose.connect(DATABASE_LOCAL);
 mongoose.connection
    .once('open',()=>console.log('connected to the database'))
    .on('error',(err)=>console.log(err))
@@ -42,7 +58,7 @@ mongoose.connection
 app.use(home);
 
 // listener setup
-const server = app.listen(port,(err)=>{
+const server = app.listen(PORT,(err)=>{
      const { port:p, address:add } = server.address();
      err ? console.log(err) : console.log(`server is running on port ${p}`)
 });

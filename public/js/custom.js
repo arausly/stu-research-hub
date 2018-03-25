@@ -51,5 +51,10 @@
     adaptiveHeight: true,
     mode: 'fade'
   });
-
+ 
+  //login to create-account swap
+  $('.create-acct').on('click',function(e){
+     console.log('it works')
+  })
+ 
 })(jQuery);

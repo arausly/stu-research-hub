@@ -1,5 +1,4 @@
 extends index
-
 include mixins/loginForm
 
 block activity
@@ -8,6 +7,7 @@ block activity
 
 block content
   +loginForm()
+  link(href="/css/test.css" rel="stylesheet" type="text/css")
 
 block welcome-greeting
   .container
@@ -15,14 +15,12 @@ block welcome-greeting
       .col-md-12.wow.fadeIn.delay-05s
         .banner-text
           h2
-            | Hi, Welcome to 
-            span sikaResearch
+            | Hi, You can upload
           p
-           | where you can Collaborate 
-           br
-           | and Learn
+            | your papers here at 
+            span.deco sikaResearch
+          p
+           | And publish to be viewed  
           .quick-access
             button(class="get-started")
-              | Get Started
-            button(class="contact-us")
-              | Contact Us
+              | Upload

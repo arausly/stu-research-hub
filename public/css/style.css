@@ -183,6 +183,36 @@ Responsive media queries
 .section-padding {
   padding: 60px 0px;
 }
+
+/*Login styles*/
+ .modal-title{
+   text-align:center;
+   font-weight:500;
+ }
+
+ .alternatives{
+    display: flex;
+    flex-direction: row; 
+    margin-top:6px;
+ }
+
+ .modal-footer{
+   display:flex;
+   flex-direction:row;
+   justify-content:space-around;
+   align-items: center;  
+ }
+ .twitter, .fb, .google{
+    position:relative;
+    flex:1;
+    border:1px solid #62646f;
+    padding:3px;
+    text-align:left;
+    padding-left:20px; 
+    cursor:pointer;
+    margin-right:10px;
+ }
+
 /*intro images*/
 .explore-head{
   padding-bottom:8px;

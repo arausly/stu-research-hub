@@ -71,7 +71,7 @@ studentSchema.save('pre', async function(next){
 studentSchema.plugin(mongodbErrorHandler);
 
 // helps with authentication
-studentSchema.plugin(passportLocalMongoose);
+studentSchema.plugin(passportLocalMongoose,{usernameField:'email',usernameUnique:'email'});
 
 
 //exports the model
