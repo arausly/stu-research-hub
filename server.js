@@ -4,20 +4,28 @@ const bodyParser =  require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
-const home = require('./routes/home');
+const home = require('./routes');
 const session = require('express-session')
 const mongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
 const passport = require('passport');
 
+
+// passport config
+require('./handlers/passport');
+
+// for the enviroment varibles
 dotenv.config({path:'variables.env'});
 
+
+// secrets save.
 const {
   PORT,
   DATABASE_LOCAL,
   SECRET,
   DATABASE
 } = process.env;
+
 //app initialization
 const app = express();
 const port = process.env.PORT;

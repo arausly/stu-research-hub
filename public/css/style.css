@@ -54,6 +54,11 @@ Responsive media queries
   position: relative;
 }
 
+/*avatar*/
+.avatar-styl{
+  height:180px;
+  width:180px;
+}
 .navbar-default {
   background-color: transparent;
   border: 0px;

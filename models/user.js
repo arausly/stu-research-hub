@@ -24,7 +24,6 @@ const userSchema = new Schema({
     },
     status:{
         type:String,
-        required:true
     },
     password:{
         type:String,
@@ -37,7 +36,9 @@ const userSchema = new Schema({
         unique:true
     },
     cluster:[String],
-    category:[String],
+    category:[{
+        type:String,
+    }],
     paper:[{
         type:Schema.Types.ObjectId
     }],
@@ -46,7 +47,7 @@ const userSchema = new Schema({
 });
 
 // password hashing before saving to database
-user.save('pre', async function(next){
+userSchema.pre('save', async function(next){
 
     if(this.isModified('name')){
         this.slug = slug(this.name);
@@ -59,7 +60,7 @@ user.save('pre', async function(next){
     if(this.isModfied('password')){
          bcrypt.genSalt(10,function(err,salt){
             if (err) return next();
-                bcrypt.hash(this.password,salt,function(err,hash){
+                bcrypt.hash(this.password,salt, async function(err,hash){
                     if(err) return next();
                      this.password = hash;
                      await userSchema.save();
@@ -82,4 +83,4 @@ userSchema.method.createPhoto = (email)=>{
 }
 
 //exports the model
-module.exports = mongoose.models('user',userSchema);
+module.exports = mongoose.model('users',userSchema);
