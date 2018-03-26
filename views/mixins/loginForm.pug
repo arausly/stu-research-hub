@@ -15,7 +15,7 @@ mixin loginForm()
               .google
                 i.fa.fa-google &nbsp; Google
           .modal-body
-            form
+            form.body-form
               .form-group
                 label.col-form-label(for="name") email:
                 input#email.form-control(type="text" placeholder="example@stu.cu.edu.ng" name="email")
@@ -23,6 +23,7 @@ mixin loginForm()
                 label.col-form-label(for="password") Password:
                 input#password.form-control(type="password" placeholder="password" name="password")
           .modal-footer
-            button.btn.btn-primary(type="submit") Login
-            button.btn.btn-primary(class="create-acct" type="button") Create new account
-            
+            button.btn.btn-primary(type="submit" class="login-btn") Login
+            button#test.btn.btn-primary(class="create-acct" type="button") Create new account
+          
+  script(src="/js/login-createForm.js" type="text/javascript")          

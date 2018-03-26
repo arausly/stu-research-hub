@@ -1,8 +1,8 @@
-const studentSchema = require('../models/user');
+const User = require('../models/user');
 const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 
-passport.use(new LocalStrategy(studentSchema.authenticate()));
-
-passport.serializeUser(studentSchema.serialzeUser());
-passport.deserializeUser(studentSchema.deserializeUser());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 

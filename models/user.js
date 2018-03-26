@@ -5,6 +5,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
+const md5 = require('md5');
 
 
 // must sign in with cu email.
@@ -40,11 +41,12 @@ const userSchema = new Schema({
     paper:[{
         type:Schema.Types.ObjectId
     }],
-    slugs:String
+    slugs:String,
+    avatar:String
 });
 
 // password hashing before saving to database
-studentSchema.save('pre', async function(next){
+user.save('pre', async function(next){
 
     if(this.isModified('name')){
         this.slug = slug(this.name);
@@ -60,7 +62,7 @@ studentSchema.save('pre', async function(next){
                 bcrypt.hash(this.password,salt,function(err,hash){
                     if(err) return next();
                      this.password = hash;
-                     await studentSchema.save();
+                     await userSchema.save();
                      return next();
                 })
          })
@@ -68,11 +70,16 @@ studentSchema.save('pre', async function(next){
 });
 
 // handle validation errors and renders it cleanly
-studentSchema.plugin(mongodbErrorHandler);
+userSchema.plugin(mongodbErrorHandler);
 
 // helps with authentication
-studentSchema.plugin(passportLocalMongoose,{usernameField:'email',usernameUnique:'email'});
+userSchema.plugin(passportLocalMongoose,{usernameField:'email',usernameUnique:'email'});
 
+// generate default profile picture
+userSchema.method.createPhoto = (email)=>{
+  let hash = md5(email);
+  return `https://www.gravatar.com/${hash}?s=200`;
+}
 
 //exports the model
-module.exports = mongoose.models('student',studentSchema);
+module.exports = mongoose.models('user',userSchema);

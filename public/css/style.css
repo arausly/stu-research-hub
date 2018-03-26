@@ -256,6 +256,67 @@ Responsive media queries
   word-break:break-all; 
 }
 
+/*department*/
+.department{
+  display:flex;
+  justify-content:center;
+  margin:55px;
+  flex-direction:column;
+  padding:40px;
+}
+
+.input-group.mb-3{
+  display:flex;
+  flex-direction:row;
+  margin:0 auto;
+}
+
+.search{
+ border-radius:initial;
+ border-top-right-radius:15%; 
+ border-bottom-right-radius:15%;
+ height:100%;
+}
+
+.courses{
+ position:relative;
+ display:grid;
+ grid-template-columns:repeat(3,minmax(310px,1fr));
+ grid-template-rows:repeat(1,minmax(240px,280px));
+ grid-gap:20px;
+ padding:20px;
+}
+
+.img-container{
+  position:absolute;
+  height:20%;
+}
+
+/* .card-title{
+  background-color: #BE2525;
+  padding:3px;
+  height:auto;
+  width:100%;
+  clip-path: polygon(50% 100%, 100% 90%,100% 0, 0 0);
+  border:1px solid #BE2525;
+  color:#fff;
+  font-weight:500;
+  font-size:30px;
+  font-family:sans-serif; 
+} */
+.card-img-top{
+  position:relative;
+  height:100%;
+  width:100%;
+  background-size:contain;
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+  background-position:center center;
+  transition:0.3s;
+  filter:grayscale(45%);
+}
+
+
 .title {
   font-size: 24px;
   margin-bottom: 50px;

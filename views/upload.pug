@@ -5,7 +5,7 @@ block activity
   li
     a(data-toggle="modal" class="login-head" data-target="#exampleModal" data-whatever="@mdo") #{detail}
 
-block content
+block form
   +loginForm()
   link(href="/css/test.css" rel="stylesheet" type="text/css")
 
@@ -20,7 +20,29 @@ block welcome-greeting
             | your papers here at 
             span.deco sikaResearch
           p
-           | And publish to be viewed  
+            | And publish to be viewed  
           .quick-access
             button(class="get-started")
               | Upload
+            button(class="contact-us")
+              | Check Papers
+block body              
+  .container.department
+    .input-group.mb-3
+      input.form-control(type='text',name="keySearch" placeholder="enter keywords", aria-label="Recipient's username", aria-describedby='basic-addon2')
+      .input-group-append
+        button.btn.btn-default.search search
+    .col-md-4.courses
+      -const categories = [{part:'Electrical Electronics',img:'electrical'},{part:'Computer Engineering',img:'computer'},{part:'Info and Comm Engineering', img:'mast'}]
+       each category in categories 
+        .card
+          .img-container
+          img.card-img-top(src=`/images/${category.img}.jpg`)
+          .card-body
+            a(href="/papers")
+              h5.card-title #{category.part}
+            p.card-text
+            | Some quick example text to build on the card title and make up the bulk of the card's content.
+  
+
+    

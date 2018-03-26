@@ -6,7 +6,7 @@ block activity
   li
     a(data-toggle="modal" class="login-head" data-target="#exampleModal" data-whatever="@mdo") #{detail}
 
-block content
+block form
   +loginForm()
 
 block welcome-greeting
@@ -26,3 +26,42 @@ block welcome-greeting
               | Get Started
             button(class="contact-us")
               | Contact Us
+block body
+  section#about.section-padding.wow.fadeIn.delay-05s
+    .container
+      h5.explore-head Explore
+      .row.intro
+        .col-md-4
+          a(href="/final-year-projects")
+            img(src="/images/final-year.svg" alt="")
+          p Final year projects
+          p 
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+        .col-md-4
+          a(href="/research")
+            img(src="/images/research.svg" alt="")
+          p Research Projects
+          p 
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+        .col-md-4
+          a(href="/collaborate")
+            img(src="/images/collaborate.svg" alt="")
+          p Collaborations
+          p 
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+            | lorem ipsum blah blah blah
+          

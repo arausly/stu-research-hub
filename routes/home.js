@@ -8,4 +8,8 @@ router.get('/final-year-projects',(req,res,next)=>{
     res.render('upload',{detail:'Upload'})
 })
 
+router.get('/papers',(req,res,next)=>{
+   res.render('paper');
+});
+
 module.exports = router;

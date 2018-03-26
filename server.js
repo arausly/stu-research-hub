@@ -8,13 +8,15 @@ const home = require('./routes/home');
 const session = require('express-session')
 const mongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
+const passport = require('passport');
 
 dotenv.config({path:'variables.env'});
 
 const {
   PORT,
   DATABASE_LOCAL,
-  SECRET
+  SECRET,
+  DATABASE
 } = process.env;
 //app initialization
 const app = express();
@@ -36,7 +38,9 @@ app.use(session({
   key:'connect-sid',
   secret:SECRET,
   store: new mongoStore({url:DATABASE_LOCAL,autoReconnect:true})
-}))
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 //locals
 app.use((req,res,next)=>{
