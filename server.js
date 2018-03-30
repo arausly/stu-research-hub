@@ -20,7 +20,6 @@ dotenv.config({path:'variables.env'});
 
 // secrets save.
 const {
-  PORT,
   DATABASE_LOCAL,
   SECRET,
   DATABASE
@@ -28,7 +27,7 @@ const {
 
 //app initialization
 const app = express();
-const port = process.env.PORT;
+const port = 8080 || process.env.PORT;
 
 //view engine setup
 app.set('view engine','pug');

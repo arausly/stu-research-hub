@@ -6,11 +6,18 @@
   "scripts": {
     "start": "nodemon server.js"
   },
-  "engine": {
-    "version": "8.10.0"
+  "engines": {
+    "node": "8.10.0"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "author": "d_rausman",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
