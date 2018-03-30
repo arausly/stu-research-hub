@@ -1,8 +1,8 @@
 const User = require('../models/user');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 
-passport.use(new LocalStrategy(User.authenticate()));
+// store the user so i can reference
+passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 

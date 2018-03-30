@@ -1,3 +1,4 @@
+
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser =  require('body-parser');
@@ -9,7 +10,6 @@ const session = require('express-session')
 const mongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
 const passport = require('passport');
-
 
 // passport config
 require('./handlers/passport');
@@ -39,7 +39,7 @@ app.use('/',express.static(path.resolve(__dirname,'public')));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(flash())
+app.use(flash());
 app.use(session({
   saveUninitialized:false,
   resave:false,
@@ -50,12 +50,13 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//locals
 app.use((req,res,next)=>{
   res.locals.title = '📖 sika';
   res.locals.flashes = req.flash();
   next();
 });
+
+
 
 // database setup
 mongoose.Promise = global.Promise;

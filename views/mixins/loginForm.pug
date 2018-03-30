@@ -1,19 +1,12 @@
-mixin loginForm()
-  form(action="/login" method="POST" role="form")
+mixin loginForm(info)
+  form(action='/login' method="POST" role="form" enctype="multipart/form-data")
     #exampleModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true")
       .modal-dialog(role="document")
         .modal-content
           .modal-header
-            h5#exampleModalLabel.modal-title We are pleased to have you
+            h5#exampleModalLabel.modal-title #{info}
             button.close(type="button" data-dismiss="modal" aria-label="Close")
               span(aria-hidden="true") ×
-            .alternatives
-              .fb
-                i.fa.fa-facebook &nbsp; Facebook
-              .twitter
-                i.fa.fa-twitter &nbsp; Twitter
-              .google
-                i.fa.fa-google &nbsp; Google
           .modal-body
             form.body-form
               .form-group

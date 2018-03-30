@@ -56,9 +56,17 @@ Responsive media queries
 
 /*avatar*/
 .avatar-styl{
-  height:180px;
-  width:180px;
+  height:50px;
+  width:50px;
+  border:1px solid #fff;
+  border-radius:100%;
 }
+
+.avatar-container{
+  border:1px solid #fff;
+  border-radius:100%;
+}
+
 .navbar-default {
   background-color: transparent;
   border: 0px;
@@ -309,6 +317,63 @@ Responsive media queries
   font-size:30px;
   font-family:sans-serif; 
 } */
+
+
+/*Explore*/
+.intro .col-md-4{
+  padding:10px;
+  cursor:pointer;
+  object-fit: contain;
+  transition: ease-in-out;
+  transition-delay:0.1s;
+  transition-duration:0.6s;  
+}
+
+.intro .col-md-4 img{
+  margin:20px;
+  background-color: #fff;
+
+}
+.intro .col-md-4:hover{
+  border:1px solid #BE2525;
+}
+
+.intro .col-md-4:hover img{
+ animation-name:stylus01;
+ animation-duration: 0.5s;
+ animation-timing-function:ease-in-out;
+ animation-delay:0.1s;
+ animation-direction:normal;   
+ animation-fill-mode: forwards;
+}
+
+@keyframes stylus01{
+  from{  
+    transform:translateY(0px);
+    height:180px;
+    width:180px;
+  }
+  to{
+    transform:translateY(-65px);
+    height:160px;
+    width:160px;
+  }
+}
+
+.intro .col-md-4:hover p{
+  animation-name:stylus02;
+  animation-duration:0.5s;
+  animation-timing-function:linear;
+  animation-delay:0.1s;
+  animation-direction:normal;
+  animation-fill-mode: forwards;
+}
+
+
+@keyframes stylus02{
+  to{transform:translateY(10px)}
+}
+
 .card-img-top{
   position:relative;
   height:100%;

@@ -1,27 +1,13 @@
-mixin paperRender(papers)
-  script(type="text/javascript")
-    function getDates () {
-      let dates = []; 
-        for (let i of papers) {
-            dates.push(i)
-        }
-        return [...new Set(dates)]
-    }
-  -const dates = getDates();
-     .side-results
-       h3 #{papers.length} results
-       h3 Refine by
-       h4 Years
-         each date in dates
-           label date 
-             .input-group-text
-               input(type="checkbox" aria-label="Checkbox")
-     .main-results
-       each paper in papers
-         .paper
-           .paper-title #{paper.title}
-           .paper-class #{paper.class}
-           .paper-summary #{paper.summary}
-           .paper-author #{paper.author};
+mixin papers(journals)
+  .main-results
+  -const  papers = ['Development of a Research Project Repository','Design of Metering System', 'Development of Smart Energy Meter', 'Design of Coounting System', 'Development of Water Measurement System', 'Design of Fluid Control System', 'Development of Web Application', 'Design of Database', 'Fluid Mechanics and Production', 'Research on Maintenancs in Oil Servicing Plant', 'Outlook of the Oil Industry', 'Study on Flash Over Voltage']
+    each paper in papers
+     .jumbotron.jumbotron-fluid
+       .container
+         h1.display-4 #{paper}
+     
+
+        
+
 
     

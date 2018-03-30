@@ -6,7 +6,7 @@ block activity
     a(data-toggle="modal" class="login-head" data-target="#exampleModal" data-whatever="@mdo") #{detail}
 
 block form
-  +loginForm()
+  +loginForm('Please login to upload')
   link(href="/css/test.css" rel="stylesheet" type="text/css")
 
 block welcome-greeting
@@ -18,7 +18,7 @@ block welcome-greeting
             | Hi, You can upload
           p
             | your papers here at 
-            span.deco sikaResearch
+            span.deco erepo
           p
             | And publish to be viewed  
           .quick-access

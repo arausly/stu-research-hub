@@ -7,6 +7,7 @@ const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const md5 = require('md5');
 
+mongoose.Promise = global.Promise
 
 // must sign in with cu email.
 const validateEmail = (email) => {
@@ -16,18 +17,12 @@ const validateEmail = (email) => {
 
 // schema definition
 const userSchema = new Schema({
-    name:{
+    username:{
         type:String,
-        required:true,
-        trim:true,
-        unique:true
-    },
-    status:{
-        type:String,
+        trim:true, 
     },
     password:{
         type:String,
-        required:true,
         trim:true
     },
     email:{
@@ -36,19 +31,19 @@ const userSchema = new Schema({
         unique:true
     },
     cluster:[String],
-    category:[{
+    department:[{
         type:String,
     }],
     paper:[{
-        type:Schema.Types.ObjectId
+      type:Schema.Types.ObjectId
     }],
     slugs:String,
     avatar:String
 });
 
 // password hashing before saving to database
-userSchema.pre('save', async function(next){
 
+userSchema.pre('save', async function(next){
     if(this.isModified('name')){
         this.slug = slug(this.name);
         const nameRegex = new RegexExp(`${this.name}(-([0-9])*$)?$`);
@@ -57,29 +52,31 @@ userSchema.pre('save', async function(next){
             this.slug = `${this.slug}-${nameWithSlug.length++}`
         }
     }
-    if(this.isModfied('password')){
-         bcrypt.genSalt(10,function(err,salt){
-            if (err) return next();
-                bcrypt.hash(this.password,salt, async function(err,hash){
-                    if(err) return next();
-                     this.password = hash;
-                     await userSchema.save();
-                     return next();
-                })
-         })
-    }
+    next();
+    // if(this.isModfied('password')){
+    //      bcrypt.genSalt(10,function(err,salt){
+    //         if (err) return next();
+    //             bcrypt.hash(this.password,salt, async function(err,hash){
+    //                 if(err) return next();
+    //                  this.password = hash;
+    //                  await userSchema.save();
+    //                  return next();
+    //             })
+    //      })
+    // }
 });
 
 // handle validation errors and renders it cleanly
 userSchema.plugin(mongodbErrorHandler);
 
 // helps with authentication
-userSchema.plugin(passportLocalMongoose,{usernameField:'email',usernameUnique:'email'});
+userSchema.plugin(passportLocalMongoose);
+
 
 // generate default profile picture
-userSchema.method.createPhoto = (email)=>{
+userSchema.statics.createPhoto = (email) => {
   let hash = md5(email);
-  return `https://www.gravatar.com/${hash}?s=200`;
+  return `https://www.gravatar.com/avatar/${hash}?s=200`;
 }
 
 //exports the model

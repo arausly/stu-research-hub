@@ -1,14 +1,17 @@
 extends index
 
-include mixins/loginForm
-
+include mixins/uploadForm
+include mixins/avatar
 block activity
   li
     a(data-toggle="modal" class="login-head" data-target="#exampleModal" data-whatever="@mdo") #{detail}
+  +avatar(imgFile)
   li
-   img(src=`${imgFile}` class="rounded-circle avatar-styl" alt="profile-pic")
+    a(href="/logout") logout
 block form
-  +loginForm()
+  +uploadForm()
+  link(href="/css/test2.css" rel="stylesheet" type="text/css") 
+  
 
 block welcome-greeting
   .container
@@ -16,12 +19,12 @@ block welcome-greeting
       .col-md-12.wow.fadeIn.delay-05s
         .banner-text
           h2
-            | Hi, Welcome to 
-            span sikaResearch
+            | Hi #{name}, Nice to have you at &nbsp;
+            span erepo
           p
-           | where you can Collaborate 
+           | you can upload, collaborate 
            br
-           | and Learn
+           | and many more
           .quick-access
             button(class="get-started")
               | Get Started
@@ -37,32 +40,17 @@ block body
             img(src="/images/final-year.svg" alt="")
           p Final year projects
           p 
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
+            | Click here to explore final year projects
         .col-md-4
           a(href="/research")
             img(src="/images/research.svg" alt="")
           p Research Projects
           p 
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
+            | Explore research projects
         .col-md-4
           a(href="/collaborate")
             img(src="/images/collaborate.svg" alt="")
           p Collaborations
           p 
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
-            | lorem ipsum blah blah blah
+            | Collaborate with peers!
           
