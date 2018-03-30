@@ -44,7 +44,7 @@ app.use(session({
   resave:false,
   key:'connect-sid',
   secret:SECRET,
-  store: new mongoStore({url:DATABASE_LOCAL,autoReconnect:true})
+  store: new mongoStore({url:DATABASE,autoReconnect:true})
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -55,11 +55,11 @@ app.use((req,res,next)=>{
   next();
 });
 
-
+// mongoose.connection = mongooseConnection
 
 // database setup
 mongoose.Promise = global.Promise;
-mongoose.connect(DATABASE_LOCAL);
+mongoose.connect(DATABASE);
 mongoose.connection
    .once('open',()=>console.log('connected to the database'))
    .on('error',(err)=>console.log(err))
