@@ -44,7 +44,7 @@ app.use(session({
   resave:false,
   key:'connect-sid',
   secret:SECRET,
-  store: new mongoStore({url:DATABASE,autoReconnect:true})
+  store: new mongoStore({mongooseConnection:mongoose.connection,autoReconnect:true})
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -55,11 +55,11 @@ app.use((req,res,next)=>{
   next();
 });
 
-// mongoose.connection = mongooseConnection
+//   mongooseConnection = mongoose.connection 
 
 // database setup
 mongoose.Promise = global.Promise;
-mongoose.connect(DATABASE);
+mongoose.connect(DATABASE_LOCAL);
 mongoose.connection
    .once('open',()=>console.log('connected to the database'))
    .on('error',(err)=>console.log(err))
@@ -70,7 +70,7 @@ mongoose.connection
 app.use(home);
 
 // listener setup
-const server = app.listen(PORT,(err)=>{
+const server = app.listen(port,(err)=>{
      const { port:p, address:add } = server.address();
      err ? console.log(err) : console.log(`server is running on port ${p}`)
 });

@@ -2,7 +2,6 @@ const User = require('../models/user');
 const passport = require('passport');
 const Paper = require('../models/papers');
 const multer = require('multer');
-const jimp = require('jimp');
 
 
 exports.registerUser = async(req, res, next) =>{
@@ -88,40 +87,28 @@ var upload = multer({ storage: storage })*/
 
 exports.fileUpload = async (req, res, next) => {
    try{
-        console.log(req.body)
-        if(!req.isAuthenticated && !req.files) return res.redirect('/final-year-projects');
-
+        if(!req.user && !req.file) return res.redirect('/final-year-projects');
+   
+    let storage = multer.diskStorage({
+        destination:'./public/journals'
+    });
+   let upload = multer({storage}).any();
+    upload(req, res, async (err)=>{
+       if(err){
+           console.log(err);
+           return res.end('Error uploading file');
+           res.redirect('/home')
+       }else{
         await new Paper({
-        user:req.user._id,
-        title:req.body.title,
-       }).save();
-
-
-        multerOptions = {
-            storage:multer.memoryStorage(),
-            fileFilter(req, file, next) {
-                const isPdf = file.mimetype === ('application/pdf') || ('application/x-pdf');
-                if(isPdf) {
-                  next(null, true); 
-                } else {
-                   next({ message: 'This filetype is not allowed'}, false);
-                }
-            }
-        }
-   multer(multerOptions).single('newPaper');
+            user:req.user._id,
+            title:req.body.title,
+           }).save();
+           next();
+       }
+    });
    }catch(err){console.error(err)}
+   next();
 }
-
-exports.writeToFile = async ()=>{
-  if(!req.file) return next();
-  const extension = req.file.mimetype.split('/')[1];
-  req.body.newPaper = `${req.body.title}.${extension}`;
-
-  const pdf = await jimp.read(req.file.buffer);
-  await pdf.write(`./public/uploads/${req.body.pdf}`);
-  next();
-}
-
 
 exports.getPapers = async (req, res, next) => {
      let journals = Paper.find({});

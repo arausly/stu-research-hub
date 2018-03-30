@@ -1,10 +1,13 @@
 mixin papers(journals)
   .main-results
-  -const  papers = ['Development of a Research Project Repository','Design of Metering System', 'Development of Smart Energy Meter', 'Design of Coounting System', 'Development of Water Measurement System', 'Design of Fluid Control System', 'Development of Web Application', 'Design of Database', 'Fluid Mechanics and Production', 'Research on Maintenancs in Oil Servicing Plant', 'Outlook of the Oil Industry', 'Study on Flash Over Voltage']
-    each paper in papers
-     .jumbotron.jumbotron-fluid
-       .container
-         h1.display-4 #{paper}
+    if journals.length
+      each journal in journals
+        .jumbotron.jumbotron-fluid
+          .container
+            h1.display-4 #{journal.title}
+    else
+      .container
+        h1 'No papers on this page'      
      
 
         
