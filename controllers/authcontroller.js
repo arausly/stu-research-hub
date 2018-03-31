@@ -73,19 +73,8 @@ exports.papers = (req, res) => {
 
 
 
-
-/* var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, '/tmp/my-uploads')
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now())
-  }
-})
- 
-var upload = multer({ storage: storage })*/
-
 exports.fileUpload = async (req, res, next) => {
+    // multer always uploads before passing to req
    try{
         if(!req.user && !req.file) return res.redirect('/final-year-projects');
    

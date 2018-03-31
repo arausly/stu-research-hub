@@ -1,15 +1,15 @@
-
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser =  require('body-parser');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
-const home = require('./routes');
 const session = require('express-session')
 const mongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
 const passport = require('passport');
+
+const home = require('./routes');
 
 // passport config
 require('./handlers/passport');
