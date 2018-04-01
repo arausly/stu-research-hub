@@ -18,9 +18,9 @@ const {
 router.get('/',getLandingPage);
 router.get('/final-year-projects',finalYearProj);
 router.get('/home',getWelcomePage);
-// router.get('/papers',getPapers)
+router.get('/papers',getPapers)
 router.post('/login',login)
 router.post('/sign-in',upload, resize, registerUser, login)
 router.get('/logout',logout);
-router.post('/home/file-upload',fileUpload,getPapers);
+router.post('/home/file-upload',fileUpload);
 module.exports = router;

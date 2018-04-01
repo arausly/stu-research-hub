@@ -96,10 +96,19 @@ exports.fileUpload = async (req, res, next) => {
        }
     });
    }catch(err){console.error(err)}
-   next();
+   res.redirect('/papers')
 }
 
+//  render papers page.
+
 exports.getPapers = async (req, res, next) => {
-     let journals = Paper.find({});
-     res.render('paperPage',{journals})
+     try{
+    
+          let journals = await Paper.find({});
+          console.log(journals);
+          res.render('paperPage',{journals});
+
+     }catch(err){
+          console.error(err);
+     }
 }
