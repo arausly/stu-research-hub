@@ -8,6 +8,7 @@ const session = require('express-session')
 const mongoStore = require('connect-mongo')(session);
 const flash = require('express-flash');
 const passport = require('passport');
+const socketIO = require('socket.io');
 
 const home = require('./routes');
 
@@ -74,3 +75,13 @@ const server = app.listen(port,(err)=>{
      const { port:p, address:add } = server.address();
      err ? console.log(err) : console.log(`server is running on port ${p}`)
 });
+
+
+// socket instatiation
+// const io = socketIO(server);
+
+// // listen on connection
+// io.on('connection', (socket)=>{
+//    console.log('New user Connected');
+// });
+

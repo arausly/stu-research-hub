@@ -6,10 +6,11 @@ const {
     finalYearProj,
     getWelcomePage,
     login,
-    getPapers,
+    renderPapers,
     logout,
     fileUpload
 } = require('../controllers/authcontroller');
+
 const {
     upload,
     resize,
@@ -18,7 +19,7 @@ const {
 router.get('/',getLandingPage);
 router.get('/final-year-projects',finalYearProj);
 router.get('/home',getWelcomePage);
-router.get('/papers',getPapers)
+router.get('/papers',renderPapers)
 router.post('/login',login)
 router.post('/sign-in',upload, resize, registerUser, login)
 router.get('/logout',logout);
