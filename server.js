@@ -61,7 +61,7 @@ app.use((req,res,next)=>{
 
 // database setup
 mongoose.Promise = global.Promise;
-mongoose.connect(DATABASE_LOCAL);
+mongoose.connect(DATABASE);
 mongoose.connection
    .once('open',()=>console.log('connected to the database'))
    .on('error',(err)=>console.log(err))
