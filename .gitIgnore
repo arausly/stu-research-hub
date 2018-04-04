@@ -3,14 +3,3 @@ node_modules/
 procfile
 
 variables.env
-
-public/js/
-
-public/css/
-
-public/images/
-
-
-public/journals
-
-public/uploads

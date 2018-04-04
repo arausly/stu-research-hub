@@ -2,9 +2,18 @@ mixin papers(journals)
   .main-results
     if journals.length
       each journal in journals
-        .jumbotron.jumbotron-fluid
-          .container
-            h1.display-4 #{journal.title}
+        -const date = journal._createdAt.toDateString()
+          .jumbotron.jumbotron-fluid.upload-box
+            .container.paper-uploads
+              .img-container
+              .info-container
+                h3.paper-title #{journal.title}
+                .author Author: #{journal.user.fullname}
+                .paper-date  Published at: #{date}
+                .paper-department Department: #{journal.user.department}
+                .paper-btns
+                  a.btn.btn-primary(href=`/home/download/${journal._id}`) Download
+                  a.btn.btn-primary(href=``) view
     else
       .container
         h1 'No papers on this page'      

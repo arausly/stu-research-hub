@@ -8,7 +8,8 @@ const {
     login,
     renderPapers,
     logout,
-    fileUpload
+    fileUpload,
+    getPaper
 } = require('../controllers/authcontroller');
 
 const {
@@ -24,4 +25,8 @@ router.post('/login',login)
 router.post('/sign-in',upload, resize, registerUser, login)
 router.get('/logout',logout);
 router.post('/home/file-upload',fileUpload);
+router.get('/home/download/:_id',getPaper);
+router.get('/final-year-projects', getPaper);
+router.get('/research',getPaper);
+router.get('/collaborate',getPaper);
 module.exports = router;

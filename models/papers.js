@@ -9,7 +9,11 @@ const paperSchema = new Schema({
         trim:true,
     },
     user:{
-        type:Schema.Types.ObjectId
+        type: Schema.Types.ObjectId, 
+        ref: 'users'
+    },
+    filename:{
+        type:String,
     },
     _createdAt:{
         type:Date,

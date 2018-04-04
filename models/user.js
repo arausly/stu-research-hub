@@ -17,9 +17,14 @@ const validateEmail = (email) => {
 
 // schema definition
 const userSchema = new Schema({
+    fullname:{
+        type:String,
+        trim:true,
+    },
     username:{
         type:String,
         trim:true, 
+        unique:true,
     },
     password:{
         type:String,
@@ -70,7 +75,7 @@ userSchema.pre('save', async function(next){
 userSchema.plugin(mongodbErrorHandler);
 
 // helps with authentication
-userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose, { usernameField:'email' });
 
 
 // generate default profile picture

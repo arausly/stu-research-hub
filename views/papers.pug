@@ -1,0 +1,27 @@
+extends index 
+
+include mixins/papers
+
+block welcome-greeting
+  .container
+    .row
+      .col-md-12.wow.fadeIn.delay-05s
+        .banner-text
+          h2
+            | Hi, Welcome to 
+            span erepo
+          p
+           | View uploaded papers &
+           br
+           |  also try downloading.
+          .quick-access
+            button(class="get-started")
+              | Get Started
+            button(class="contact-us")
+              | Contact Us
+
+block body
+  .container
+    +papers(journals)
+  link(href="/css/test3.css" rel="stylesheet" type="text/css") 
+  
